@@ -1,4 +1,5 @@
 <?php
+/* ATIVIDADE 2 */
 	 $arraysidebar = array(
 		
 		array(
@@ -18,6 +19,7 @@
 
 	);
 	$arraysidebar_ordenado = $arraysidebar;
+	/* Função para deixar em ordem alfabética */
 	sort($arraysidebar_ordenado);
 	sort($arraysidebar_ordenado[0]['submenu']);
 	sort($arraysidebar_ordenado[1]['submenu']);
@@ -55,6 +57,8 @@
 					</a>
 				</li>
 				<!--Cliente-->
+				<!-- ATIVIDADE 2 -->
+				<!-- Foreach pegando o ícone e o título do menu -->
 				<?php foreach($arraysidebar_ordenado as $item){?>
 					<li class="">
 						<a href="javascript:;">
@@ -66,6 +70,7 @@
 						</span>
 						</a>
 						<ul class="sub-menu">
+							<!-- Foreach pegando os submenus -->
 							<?php foreach ($item['submenu'] as $subitem) {?>
 								<li><a href="#"><?=$subitem?></a></li>
 							<?php };?>

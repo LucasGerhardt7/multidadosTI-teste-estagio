@@ -29,7 +29,7 @@
 <!-- BEGIN BODY -->
 <body class="page-header-fixed">
 
-<?php include 'cabecalho.php'?>
+<?php include 'cabecalho.php'?><!-- ATIVIDADE 1 -->
 
 
 <div class="clearfix">
@@ -38,7 +38,7 @@
 <div class="page-container">
 	
 
-<?php include 'menu.php'?>
+<?php include 'menu.php'?><!-- ATIVIDADE 1 -->
 
 	<!-- BEGIN CONTENT -->
 	<div class="page-content-wrapper">
@@ -95,57 +95,66 @@
 			</div>
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN DASHBOARD STATS -->
+			<?php require 'DataRequest.php';?><!-- ATIVIDADE 3 -->
+			<?php $dataRequest = new DataRequest();?><!-- ATIVIDADE 3 -->
 			<div class="row">
 				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-					<div class="dashboard-stat blue">
+					<div class="dashboard-stat blue" id="cliente-blue">
 						<div class="visual">
 							<i class="fa fa-shopping-cart"></i>
 						</div>
 						<div class="details">
 							<div class="number">
-								 1349
+							
+							<?php echo (string)$dataRequest -> dadosClientes('c');?><!-- ATIVIDADE 3 -->
+
 							</div>
 							<div class="desc">
+							
 								 Clientes
 							</div>
 						</div>
-						<a class="more" href="#">
+						<!-- ATIVIDADE 4 -->
+						<a class="more" id="vizualizar-clientes" 
+						onclick="mudaCor(getComputedStyle(document.getElementById('cliente-blue')).backgroundColor)"	href="#">
 						Visualizar <i class="m-icon-swapright m-icon-white"></i>
 						</a>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-					<div class="dashboard-stat green">
+					<div class="dashboard-stat green" id="usuarios-green">
 						<div class="visual">
 							<i class="fa fa-group"></i>
 						</div>
 						<div class="details">
 							<div class="number">
-								549
+							<?php echo (string)$dataRequest -> dadosUsuarios('c');?><!-- ATIVIDADE 3 -->
 							</div>
 							<div class="desc">
 								Usuários
 							</div>
 						</div>
-						<a class="more" href="#">
+						<!-- ATIVIDADE 4 -->
+						<a class="more" id="vizualizar-usuarios" onclick="mudaCor(getComputedStyle(document.getElementById('usuarios-green')).backgroundColor)" href="#">
 						Visualizar <i class="m-icon-swapright m-icon-white"></i>
 						</a>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-					<div class="dashboard-stat purple">
+					<div class="dashboard-stat purple" id="Fornecedores-purple">
 						<div class="visual">
 							<i class="fa fa-globe"></i>
 						</div>
 						<div class="details">
 							<div class="number">
-								89
+							<?php echo (string)$dataRequest -> dadosFornecedores('c');?><!-- ATIVIDADE 3 -->
 							</div>
 							<div class="desc">
 								Fornecedores
 							</div>
 						</div>
-						<a class="more" href="#">
+						<!-- ATIVIDADE 4 -->
+						<a class="more" id="vizualizar-fornecedores" onclick="mudaCor(getComputedStyle(document.getElementById('Fornecedores-purple')).backgroundColor)" href="#">
 						Visualizar <i class="m-icon-swapright m-icon-white"></i>
 						</a>
 					</div>
@@ -159,8 +168,8 @@
 				<div class="col-md-12">
 					<!-- BEGIN SAMPLE TABLE PORTLET-->
 					<div class="portlet box grey">
-						<div class="portlet-title">
-							<div class="caption">
+						<div class="portlet-title" id="tabela_header">
+							<div class="caption"  >
 								<i class="fa fa-folder-open"></i>Tabela Simples
 							</div>
 							<div class="tools">
@@ -274,16 +283,20 @@
 							</div>
 						</div>
 					</div>
+					
 					<!-- END SAMPLE TABLE PORTLET-->
 				</div>
 			</div>
 		</div>
+		
 	</div>
 	<!-- END CONTENT -->
+	
 </div>
 <!-- END CONTAINER -->
 
-<?php include 'rodape.php'?>
+
+<?php include 'rodape.php'?><!-- ATIVIDADE 1 -->
 
 
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
@@ -306,6 +319,15 @@ jQuery(document).ready(function() {
    App.init(); // initlayout and core plugins
    Index.init();
 });
+
+
+/* ATIVIDADE 4 */
+/* também usei javascript nas linhas dos hiperlinks (vizualizar) */
+var tabelaHeader = document.getElementById("tabela_header");
+function mudaCor(cor){
+	tabelaHeader.style.backgroundColor = cor;
+}
+    
 </script>
 <!-- END JAVASCRIPTS -->
 </body>

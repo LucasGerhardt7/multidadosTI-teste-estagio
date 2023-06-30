@@ -1,16 +1,17 @@
 <?php
 	 $arraysidebar = array(
-		
+		array(
+				'titulo' => 'Dashboard',
+				'submenu' => array()
+			),
 		array(
 				'titulo' => 'Cadastro',
-				'i-class' => 'fa fa-file-text',
 				'submenu' => array(
 					'Cliente','Fornecedor','Usuário', 'Produtos','Perfil de acesso'
 				)
-		),
+			),
 		array(
 			'titulo' => 'Relatório',
-			'i-class' => 'fa fa-bar-chart-o',
 			'submenu' => array(
 				'Cliente','Faturamento','Produtos'
 			)
@@ -20,7 +21,7 @@
 	$arraysidebar_ordenado = $arraysidebar;
 	sort($arraysidebar_ordenado);
 	sort($arraysidebar_ordenado[0]['submenu']);
-	sort($arraysidebar_ordenado[1]['submenu']);
+	sort($arraysidebar_ordenado[2]['submenu']);
 
 ?>
 <!-- BEGIN SIDEBAR -->
@@ -55,23 +56,46 @@
 					</a>
 				</li>
 				<!--Cliente-->
-				<?php foreach($arraysidebar_ordenado as $item){?>
-					<li class="">
-						<a href="javascript:;">
-						<i class="<?=$item['i-class']?>"></i>
-						<span class="title">
-							<?=$item['titulo']?>
-						</span>
-						<span class="arrow ">
-						</span>
-						</a>
-						<ul class="sub-menu">
-							<?php foreach ($item['submenu'] as $subitem) {?>
-								<li><a href="#"><?=$subitem?></a></li>
-							<?php };?>
-						</ul>
-					</li>
-				<?php };?>
+				<li class="">
+					<a href="javascript:;">
+					<i class="fa fa-file-text"></i>
+					<span class="title">
+						Cadastro
+					</span>
+					<span class="arrow ">
+					</span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+							<a href="#">Cliente</a>
+						</li>
+						<li>
+							<a href="#">Fornecedor</a>
+						</li>
+						<li>
+							<a href="#">Usuário</a>
+						</li>
+					</ul>
+				</li>
+				<!--Relatorio-->
+				<li class="">
+					<a href="javascript:;">
+					<i class="fa fa-bar-chart-o"></i>
+					<span class="title">
+						Relatório
+					</span>
+					<span class="arrow ">
+					</span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+							<a href="#">Cliente</a>
+						</li>
+						<li>
+							<a href="#">Faturamento</a>
+						</li>
+					</ul>
+				</li>
 			</ul>
 			<!-- END SIDEBAR MENU -->
 		</div>
